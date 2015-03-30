@@ -1,0 +1,63 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Attendance:</h1>
+      구역 
+      <span class="btn btn-default" ng-click="gpFilter = Null">ALL</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:0}">None</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:1}">1</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:2}">2</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:3}">3</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:4}">4</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:5}">5</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:6}">6</span>
+      <span class="btn btn-default" ng-click="gpFilter = {group:7}">7</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:8}">8</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:9}">9</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:10}">10</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:11}">11</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:12}">12</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:13}">13</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:14}">14</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:15}">15</span> 
+      <span class="btn btn-default" ng-click="gpFilter = {group:16}">16</span>
+      <input type="text" class="form-control" placeholder="Name" ng-model="name">
+      <ul class="nav nav-tabs nav-stacked col-md-3 col-lg-3 col-sm-6 col-xs-6" ng-repeat="thing in awesomeThings | orderBy:'name' | filter:gpFilter:true | filter:group | filter:name">
+        <li ng-if="(thing.today | date:'yyyy-MM-dd') != (todayDate.toISOString().substring(0,10))">
+              <span style="font-size:20px">                      
+              <a style="color:#FF0000" href="#" editable-number="thing.group" onaftersave="groupThing(thing)">{{thing.group}}</a>:<a style="color:#FF0000" href="#" ng-click="updateThing(thing)">{{thing.name}}</a>
+            </span>
+        </li> 
+          <li ng-if="(thing.today | date:'yyyy-MM-dd') == (todayDate.toISOString().substring(0,10))">
+            <span style="font-size:20px"><a href="#" editable-number="thing.group" onaftersave="groupThing(thing)">{{thing.group}}</a>:<a href="#" ng-click="removeThing(thing)">{{thing.name}}</a>      
+            </span>
+        </li>
+      </ul>      
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Add New Name</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new name here." ng-model="newThing">
+
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      
+  </div>
+</footer>
